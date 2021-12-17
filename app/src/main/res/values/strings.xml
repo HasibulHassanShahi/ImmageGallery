@@ -3,4 +3,9 @@
     <string name="share_btn_text">Share</string>
     <string name="edit_btn_text">Edit</string>
     <string name="close_btn_text">Cancel</string>
+    <string name="rotate_btn_text">Rotate</string>
+    <string name="crop_btn_text">Crop</string>
+    <string name="filter_btn_text">Filter</string>
+    <string name="blur_btn_text">Blur</string>
+    <string name="lable_btn_text">Library</string>
 </resources>

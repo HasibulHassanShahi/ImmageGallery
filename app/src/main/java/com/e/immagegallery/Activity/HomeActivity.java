@@ -41,6 +41,12 @@ public class HomeActivity extends AppCompatActivity {
         myDialog = new Dialog(this);
 
         uploadImage();
+
+        btnEdit.setOnClickListener(view -> {
+            Intent intent = new Intent(HomeActivity.this,EditActivity.class);
+            intent.putExtra("imgUri",imageUri);
+            startActivity(intent);
+        });
     }
 
     public void ShowPopup(View v) {
