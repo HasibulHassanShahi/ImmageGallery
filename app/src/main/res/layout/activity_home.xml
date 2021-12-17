@@ -56,7 +56,8 @@
                     android:id="@+id/btnShare"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/ic_baseline_share_24"/>
+                    android:background="@drawable/ic_baseline_share_24"
+                    android:onClick="ShowPopup"/>
 
                 <TextView
                     android:id="@+id/txtshare"
