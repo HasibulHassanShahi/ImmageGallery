@@ -28,6 +28,7 @@ public class HomeActivity extends AppCompatActivity {
     private Uri imageUri = null;
 
     private Dialog myDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +41,8 @@ public class HomeActivity extends AppCompatActivity {
         myDialog = new Dialog(this);
 
         uploadImage();
-
-
     }
+
     public void ShowPopup(View v) {
         Button btnWhatsApp,btnFacebook,btnCancel;
         myDialog.setContentView(R.layout.layout_custompopup);
@@ -81,6 +81,5 @@ public class HomeActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-
     }
 }
