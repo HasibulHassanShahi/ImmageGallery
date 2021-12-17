@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Image Gallery</string>
+    <string name="share_btn_text">Share</string>
+    <string name="edit_btn_text">Edit</string>
 </resources>
