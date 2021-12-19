@@ -3,17 +3,23 @@ package com.e.immagegallery.Services;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.widget.ImageView;
 
+import com.e.immagegallery.Model.ImageModel;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ServiceClass {
 
@@ -37,10 +43,35 @@ public class ServiceClass {
         return filename;
     }
 
-    public static void imageSaveToPhoneGallery(ImageView imageView, String pathName) {
+    public static ArrayList<ImageModel> getImageList(String directory){
+        ArrayList<ImageModel> imgList = new ArrayList<>();
+        ImageModel imgModel = null;
+        String[] fileNames = null;
+
+        File path = new File(Environment.getExternalStorageDirectory(),directory);
+        if(path.exists())
+        {
+            fileNames = path.list();
+
+            for(int i = 0; i < fileNames .length; i++)
+            {
+                Bitmap mBitmap = BitmapFactory.decodeFile(path.getPath()+"/"+ fileNames[i]);
+                //imgModel = new ImageModel(mBitmap);
+                imgList.add(new ImageModel(mBitmap));
+            }
+        }
+
+        return imgList;
+    }
+
+    public static void imageSaveToPhoneGallery(ImageView imageView, String pathName, int rotationAngle) {
 
         BitmapDrawable draw = (BitmapDrawable) imageView.getDrawable();
         Bitmap bitmap = draw.getBitmap();
+
+        Matrix rotateMatrix = new Matrix();
+        rotateMatrix.postRotate(rotationAngle);
+        Bitmap rotatedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), rotateMatrix, false);
 
         FileOutputStream outStream = null;
         File sdCard = Environment.getExternalStorageDirectory();
@@ -53,7 +84,7 @@ public class ServiceClass {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
+        rotatedBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
         try {
             outStream.flush();
         } catch (IOException e) {
