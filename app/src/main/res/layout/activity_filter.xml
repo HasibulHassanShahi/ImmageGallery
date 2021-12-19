@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/ColorBlack"
+    tools:context=".Activity.FilterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="right">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSave"
+                android:layout_width="25dp"
+                android:layout_height="20dp"
+                android:layout_gravity="right"
+                android:background="@drawable/ic_baseline_done_24"
+                android:gravity="right" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.8">
+
+            <ImageView
+                android:id="@+id/filterImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"/>
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/layoutRotate"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:visibility="gone"-->
+<!--                android:layout_gravity="bottom|center">-->
+
+<!--                <androidx.appcompat.widget.AppCompatButton-->
+<!--                    android:id="@+id/btnClose"-->
+<!--                    android:layout_width="25dp"-->
+<!--                    android:layout_height="25dp"-->
+<!--                    android:background="@drawable/ic_baseline_close_24"-->
+<!--                    android:gravity="center"/>-->
+
+<!--                <androidx.appcompat.widget.AppCompatButton-->
+<!--                    android:id="@+id/btnMinus"-->
+<!--                    android:layout_width="50dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:background="@color/ColorBlack"-->
+<!--                    android:text="-"-->
+<!--                    android:textColor="@color/ColorWhite"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:textStyle="bold"/>-->
+
+<!--                <androidx.appcompat.widget.AppCompatButton-->
+<!--                    android:id="@+id/btnPlus"-->
+<!--                    android:layout_width="50dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:background="@color/ColorBlack"-->
+<!--                    android:text="+"-->
+<!--                    android:textColor="@color/ColorWhite"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:textStyle="bold"/>-->
+
+<!--                <androidx.appcompat.widget.AppCompatButton-->
+<!--                    android:id="@+id/btnDone"-->
+<!--                    android:layout_width="25dp"-->
+<!--                    android:layout_height="25dp"-->
+<!--                    android:background="@drawable/ic_baseline_done_24"-->
+<!--                    android:gravity="center"/>-->
+
+<!--            </LinearLayout>-->
+
+            <LinearLayout
+                android:id="@+id/layoutControl"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_gravity="bottom">
+
+                <Button
+                    android:id="@+id/btnClose"
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/ic_baseline_close_24"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/layoutSeekbarC"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/ic_baseline_contrast_24" />
+
+                        <SeekBar
+                            android:id="@+id/seekBarContrast"
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="20dp"
+                            android:max="10"
+                            android:min="0"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layoutSeekbarB"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_marginTop="5dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/ic_baseline_brightness_5_24" />
+
+                        <SeekBar
+                            android:id="@+id/seekBarBright"
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="20dp"
+                            android:max="255"
+                            android:min="-255"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnDone"
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/ic_baseline_done_24"/>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="0.2"
+            android:padding="2dp"
+            android:gravity="center">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnFilter1"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:text="@string/filter1_btn_text"
+                android:fontFamily="@font/dancing_script_bold"
+                android:textStyle="bold"
+                android:textSize="15dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnFilter2"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:text="@string/filter2_btn_text"
+                android:fontFamily="@font/dancing_script_bold"
+                android:textStyle="bold"
+                android:textSize="15dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnFilter3"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:text="@string/filter3_btn_text"
+                android:fontFamily="@font/dancing_script_bold"
+                android:textStyle="bold"
+                android:textSize="15dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

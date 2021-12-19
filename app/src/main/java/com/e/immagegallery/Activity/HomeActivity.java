@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -20,14 +22,19 @@ import android.widget.Toast;
 import com.e.immagegallery.R;
 import com.e.immagegallery.Services.ServiceClass;
 
+import java.io.FileInputStream;
+
 public class HomeActivity extends AppCompatActivity {
 
     private ImageView imageView;
     private Bitmap bitmap;
-    private Button btnShare, btnEdit;
+    private Button btnShare, btnEdit,btnLib;
     private Uri imageUri = null;
 
     private Dialog myDialog;
+    private Bitmap img = null;
+    private String filePathName = null;
+    private Uri imgUri = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,16 +44,27 @@ public class HomeActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageView);
         btnShare = findViewById(R.id.btnShare);
         btnEdit = findViewById(R.id.btnEdit);
+        btnLib = findViewById(R.id.btnLib);
 
         myDialog = new Dialog(this);
 
-        uploadImage();
+        imageUri = (Uri) getIntent().getParcelableExtra("img");
+
+        if(imageUri != null){
+            //recieveBitmap(filePathName);
+            imageView.setImageURI(imageUri);
+        }
+        else {
+            uploadImage();
+        }
 
         btnEdit.setOnClickListener(view -> {
             Intent intent = new Intent(HomeActivity.this,EditActivity.class);
             intent.putExtra("imgUri",imageUri);
             startActivity(intent);
         });
+
+        btnLib.setOnClickListener(view -> uploadImage());
     }
 
     public void ShowPopup(View v) {

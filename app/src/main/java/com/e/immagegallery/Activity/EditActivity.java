@@ -85,6 +85,12 @@ public class EditActivity extends AppCompatActivity {
             Intent intent = new Intent(EditActivity.this, LibraryActivity.class);
             startActivity(intent);
         });
+
+        btnFilter.setOnClickListener(view -> {
+            Intent intent = new Intent(EditActivity.this, FilterActivity.class);
+            intent.putExtra("img",imgUri);
+            startActivity(intent);
+        });
     }
 
     @Override

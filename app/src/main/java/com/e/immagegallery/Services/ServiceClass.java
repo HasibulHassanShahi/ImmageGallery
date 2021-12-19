@@ -15,6 +15,7 @@ import com.e.immagegallery.Model.ImageModel;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class ServiceClass {
 
     public static String getFilePath(Context context, Bitmap bitmapImg){
 
-        String filename = "bitmap.png";
+        String filename = null;
 
         try{
             //Write file
@@ -97,7 +98,7 @@ public class ServiceClass {
         }
     }
 
-    public Uri getImageUri(Context inContext, Bitmap inImage) {
+    public static Uri getImageUri(Context inContext, Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
@@ -118,6 +119,19 @@ public class ServiceClass {
         } catch (android.content.ActivityNotFoundException ex) {
             ex.printStackTrace();
         }
+    }
+
+    private static Bitmap recieveBitmap(Context context, String filename){
+        Bitmap bitmap = null;
+        try {
+            FileInputStream is = context.openFileInput(filename);
+            bitmap = BitmapFactory.decodeStream(is);
+            is.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return bitmap;
     }
 
 }

@@ -1,11 +1,15 @@
 package com.e.immagegallery.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.widget.Toast;
@@ -32,9 +36,7 @@ public class LibraryActivity extends AppCompatActivity implements ImageAdapter.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
-
         imageRecyclerView = findViewById(R.id.imageRecyclerView);
-
         imageModels = ServiceClass.getImageList("/SaveImages");
 
         if(imageModels != null){
@@ -43,11 +45,23 @@ public class LibraryActivity extends AppCompatActivity implements ImageAdapter.O
             mAdapter = new ImageAdapter(this, imageModels, this);
             imageRecyclerView.setAdapter(mAdapter);
         }
-
     }
 
     @Override
     public void OnItemClick(int position) {
         Toast.makeText(this,imageModels.get(position).toString(),Toast.LENGTH_SHORT).show();
+        imgModel = imageModels.get(position);
+        Bitmap imgBitmap = imgModel.getImg();
+
+        Uri uri = ServiceClass.getImageUri(this,imgBitmap);
+
+        try {
+            Intent intent = new Intent(LibraryActivity.this, HomeActivity.class);
+            intent.putExtra("img", uri);
+            startActivity(intent);
+        }catch (Exception e){
+
+        }
+
     }
 }

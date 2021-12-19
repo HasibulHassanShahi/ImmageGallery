@@ -97,6 +97,31 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="50dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnLib"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_baseline_browse_gallery_24"/>
+
+                <TextView
+                    android:id="@+id/txtLib"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gallery_btn_text"
+                    android:textColor="@color/ColorWhite"
+                    android:fontFamily="@font/dancing_script_bold"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

@@ -8,4 +8,8 @@
     <string name="filter_btn_text">Filter</string>
     <string name="blur_btn_text">Blur</string>
     <string name="lable_btn_text">Library</string>
+    <string name="gallery_btn_text">Gallery</string>
+    <string name="filter1_btn_text">Gray</string>
+    <string name="filter2_btn_text">Adjust</string>
+    <string name="filter3_btn_text">Filter 3</string>
 </resources>
