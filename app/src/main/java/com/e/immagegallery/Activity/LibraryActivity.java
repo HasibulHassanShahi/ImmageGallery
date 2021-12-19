@@ -60,8 +60,7 @@ public class LibraryActivity extends AppCompatActivity implements ImageAdapter.O
             intent.putExtra("img", uri);
             startActivity(intent);
         }catch (Exception e){
-
+            e.printStackTrace();
         }
-
     }
 }

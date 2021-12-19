@@ -48,10 +48,12 @@ public class HomeActivity extends AppCompatActivity {
 
         myDialog = new Dialog(this);
 
+        imageUri = null;
         imageUri = (Uri) getIntent().getParcelableExtra("img");
 
         if(imageUri != null){
             //recieveBitmap(filePathName);
+            //imageView = null;
             imageView.setImageURI(imageUri);
         }
         else {

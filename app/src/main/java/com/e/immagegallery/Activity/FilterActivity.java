@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.ColorMatrix;
@@ -19,6 +20,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import com.e.immagegallery.R;
 import com.e.immagegallery.Services.ServiceClass;
@@ -144,7 +146,7 @@ public class FilterActivity extends AppCompatActivity {
         });
 
         btnClose.setOnClickListener(view -> {
-            bitmap = originBitmap;
+            imageView.setImageBitmap(originBitmap);
             linearLayout.setVisibility(View.GONE);
         });
 
@@ -153,10 +155,19 @@ public class FilterActivity extends AppCompatActivity {
             linearLayout.setVisibility(View.GONE);
         });
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ServiceClass.imageSaveToPhoneGallery(imageView,"SaveImages",0);
+        btnSave.setOnClickListener(view -> {
+            ServiceClass.imageSaveToPhoneGallery(imageView,"SaveImages",0);
+
+            Toast.makeText(this, "Image Saved",Toast.LENGTH_SHORT).show();
+
+            Uri uri = ServiceClass.getImageUri(FilterActivity.this,bitmap);
+
+            try {
+                Intent intent = new Intent(FilterActivity.this, HomeActivity.class);
+                intent.putExtra("img", uri);
+                startActivity(intent);
+            }catch (Exception e){
+                e.printStackTrace();
             }
         });
 
