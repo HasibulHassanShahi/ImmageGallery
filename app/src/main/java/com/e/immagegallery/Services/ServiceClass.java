@@ -134,4 +134,11 @@ public class ServiceClass {
         return bitmap;
     }
 
+    //Sharing image over native device
+    public static void shareImage(Context context, Uri imgUri){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("image/*");
+        intent.putExtra(Intent.EXTRA_STREAM, imgUri);
+        context.startActivity(Intent.createChooser(intent,"Share on"));
+    }
 }

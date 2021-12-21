@@ -87,6 +87,11 @@ public class HomeActivity extends AppCompatActivity {
         myDialog.show();
     }
 
+    // new sharing data function
+    public void shareImage(View v){
+        ServiceClass.shareImage(HomeActivity.this, imageUri);
+    }
+
     private void uploadImage(){
         Intent gallery = new Intent();
         gallery.setType("image/*");
